@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOGIN = 102;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 String userid = data.getStringExtra("LOGIN_USERID");
                 String passwd = data.getStringExtra("LOGIN_PASSWD");
                 Log.d("RESULT",userid + "/ " + passwd);
+                Toast.makeText(this,"EXTRA_Userid"+"  "+userid,Toast.LENGTH_LONG).show();
+                getSharedPreferences("atm",MODE_PRIVATE).edit().putString("USER",userid)
+                        .apply();
             }else {
                 finish();
             }
